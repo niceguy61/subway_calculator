@@ -14,6 +14,7 @@ const DataSourceInfo = () => {
       <h4>데이터 출처</h4>
       <ul>
         <li><a href="https://www.subway.co.kr/freshInfo" target="_blank" rel="noopener noreferrer">한국 성분표</a></li>
+        <li><a href="https://www.subway.com/en-AU/MenuNutrition/Nutrition" target="_blank" rel="noopener noreferrer">호주 성분표 Data</a></li><end
       </ul>
       <p className="disclaimer">* 영양 정보는 한국 서브웨이 공식 데이터를 기반으로 하지만, 실제 제품과 차이가 있을 수 있습니다.</p>
       <p className="contact-email">문의 및 제보: <a href="mailto:niceguy6112@gmail.com">niceguy6112@gmail.com</a></p>
