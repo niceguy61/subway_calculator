@@ -238,6 +238,7 @@
   width: calc(33.33% - 10px);
   cursor: pointer;
   transition: all 0.2s ease;
+  position: relative;
 }
 
 .menu-item:hover {
@@ -253,6 +254,9 @@
 .item-name {
   font-weight: bold;
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .item-calories {

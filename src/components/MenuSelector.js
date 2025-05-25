@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './MenuSelector.css';
 
 const MenuSelector = ({ title, items, selectedItems, onChange }) => {
+  const [tooltipItem, setTooltipItem] = useState(null);
+
   const handleChange = (item) => {
     // 소스와 채소는 다중 선택 가능, 나머지는 단일 선택
     if (title === 'sauce' || title === 'vegetables') {
@@ -32,6 +35,14 @@ const MenuSelector = ({ title, items, selectedItems, onChange }) => {
     }
   };
 
+  const handleMouseEnter = (item) => {
+    setTooltipItem(item);
+  };
+
+  const handleMouseLeave = () => {
+    setTooltipItem(null);
+  };
+
   return (
     <div className="menu-selector">
       <h3>{title}</h3>
@@ -41,9 +52,17 @@ const MenuSelector = ({ title, items, selectedItems, onChange }) => {
             key={item.id} 
             className={`menu-item ${selectedItems.some(selected => selected.id === item.id) ? 'selected' : ''}`}
             onClick={() => handleChange(item)}
+            onMouseEnter={() => handleMouseEnter(item)}
+            onMouseLeave={handleMouseLeave}
           >
-            <div className="item-name">{item.name}</div>
+            <div className="item-name">
+              {item.name}
+              {title === 'meat' && item.description && <span className="info-icon">!</span>}
+            </div>
             <div className="item-calories">{item.calories} kcal</div>
+            {tooltipItem === item && item.description && (
+              <div className="tooltip">{item.description}</div>
+            )}
           </div>
         ))}
       </div>
