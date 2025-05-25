@@ -241,7 +241,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src="/subway-logo.png" alt="Subway Logo" className="logo" />
-        <h1>서브웨이 칼로리 계산기</h1>
+        <h1>서브웨이 칼로리 계산기 (Unofficial)</h1>
         <p>원하는 재료를 선택하여 영양 정보를 확인하세요</p>
       </header>
       
