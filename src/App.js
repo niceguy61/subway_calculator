@@ -8,6 +8,7 @@ import SizeSelector from './components/SizeSelector';
 import DataSourceInfo from './components/DataSourceInfo';
 import ShareLink from './components/ShareLink';
 import CalorieCounter from './components/CalorieCounter';
+import UpdateNotes from './components/UpdateNotes';
 import subwayData from './data/subwayData.json';
 
 function App() {
@@ -304,6 +305,7 @@ function App() {
             />
           </div>
           
+          <UpdateNotes />
           <DataSourceInfo />
         </div>
         
