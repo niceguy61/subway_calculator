@@ -2,7 +2,7 @@
 
 서브웨이 샌드위치의 영양 정보를 계산해주는 웹 애플리케이션입니다.
 
-https://subway_cal.drumgoon.net
+https://subway-cal.drumgoon.net
 
 ## 기능
 
