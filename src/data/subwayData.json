@@ -1,0 +1,465 @@
+{
+  "metadata": {
+    "source": [
+      "https://www.subway.co.kr/freshInfo",
+      "https://www.subway.co.kr/menuNutrition/nutrition"
+    ],
+    "contact": "niceguy6112@gmail.com",
+    "lastUpdated": "2023-06-15",
+    "disclaimer": "이 데이터는 한국 서브웨이 공식 영양 정보를 기반으로 하지만, 실제 제품과 차이가 있을 수 있습니다."
+  },
+  "sizes": [
+    {
+      "id": "15cm",
+      "name": "15cm",
+      "multiplier": 1
+    },
+    {
+      "id": "30cm",
+      "name": "30cm",
+      "multiplier": 2
+    }
+  ],
+  "breads": [
+    {
+      "id": "white",
+      "name": "화이트",
+      "calories": 202,
+      "carbs": 38,
+      "protein": 6.1,
+      "fat": 0.3,
+      "sodium": 343
+    },
+    {
+      "id": "wheat",
+      "name": "위트",
+      "calories": 192,
+      "carbs": 37,
+      "protein": 8.4,
+      "fat": 0.5,
+      "sodium": 257
+    },
+    {
+      "id": "flat_bread",
+      "name": "플랫브레드",
+      "calories": 232,
+      "carbs": 39,
+      "protein": 8,
+      "fat": 0.9,
+      "sodium": 465
+    },
+    {
+      "id": "honey_oat",
+      "name": "허니오트",
+      "calories": 235,
+      "carbs": 43,
+      "protein": 8.8,
+      "fat": 0.6,
+      "sodium": 306
+    },
+    {
+      "id": "hearty_italian",
+      "name": "하티",
+      "calories": 210,
+      "carbs": 42,
+      "protein": 7,
+      "fat": 1,
+      "sodium": 340
+    },
+    {
+      "id": "parmesan_oregano",
+      "name": "파마산 오레가노",
+      "calories": 213,
+      "carbs": 42,
+      "protein": 6.3,
+      "fat": 0.4,
+      "sodium": 489
+    }
+  ],
+  "meats": [
+    {
+      "id": "ham",
+      "name": "햄",
+      "calories": 70,
+      "carbs": 2,
+      "protein": 12,
+      "fat": 2,
+      "sodium": 650
+    },
+    {
+      "id": "turkey",
+      "name": "터키",
+      "calories": 60,
+      "carbs": 1,
+      "protein": 12,
+      "fat": 1,
+      "sodium": 580
+    },
+    {
+      "id": "chicken",
+      "name": "치킨",
+      "calories": 90,
+      "carbs": 2,
+      "protein": 15,
+      "fat": 3,
+      "sodium": 610
+    },
+    {
+      "id": "tuna",
+      "name": "참치",
+      "calories": 180,
+      "carbs": 2,
+      "protein": 11,
+      "fat": 14,
+      "sodium": 320
+    },
+    {
+      "id": "roast_beef",
+      "name": "로스트 비프",
+      "calories": 90,
+      "carbs": 2,
+      "protein": 18,
+      "fat": 2,
+      "sodium": 550
+    },
+    {
+      "id": "meatball",
+      "name": "미트볼",
+      "calories": 230,
+      "carbs": 12,
+      "protein": 14,
+      "fat": 15,
+      "sodium": 740
+    },
+    {
+      "id": "steak",
+      "name": "스테이크",
+      "calories": 110,
+      "carbs": 2,
+      "protein": 17,
+      "fat": 4,
+      "sodium": 520
+    },
+    {
+      "id": "egg_mayo",
+      "name": "에그마요",
+      "calories": 180,
+      "carbs": 3,
+      "protein": 8,
+      "fat": 16,
+      "sodium": 340
+    },
+    {
+      "id": "blt",
+      "name": "BLT",
+      "calories": 80,
+      "carbs": 1,
+      "protein": 6,
+      "fat": 6,
+      "sodium": 400
+    },
+    {
+      "id": "shrimp",
+      "name": "쉬림프",
+      "calories": 85,
+      "carbs": 2,
+      "protein": 16,
+      "fat": 2,
+      "sodium": 480
+    },
+    {
+      "id": "pulled_pork",
+      "name": "풀드 포크 바비큐",
+      "calories": 160,
+      "carbs": 8,
+      "protein": 14,
+      "fat": 9,
+      "sodium": 520
+    },
+    {
+      "id": "k_bbq",
+      "name": "K-바비큐",
+      "calories": 170,
+      "carbs": 10,
+      "protein": 15,
+      "fat": 8,
+      "sodium": 580
+    },
+    {
+      "id": "spicy_italian",
+      "name": "스파이시 이탈리안",
+      "calories": 220,
+      "carbs": 3,
+      "protein": 11,
+      "fat": 18,
+      "sodium": 750
+    },
+    {
+      "id": "italian_bmt",
+      "name": "이탈리안 비엠티",
+      "calories": 190,
+      "carbs": 3,
+      "protein": 14,
+      "fat": 14,
+      "sodium": 820
+    }
+  ],
+  "vegetables": [
+    {
+      "id": "lettuce",
+      "name": "양상추",
+      "calories": 5,
+      "carbs": 1,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 0
+    },
+    {
+      "id": "tomatoes",
+      "name": "토마토",
+      "calories": 10,
+      "carbs": 2,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 5
+    },
+    {
+      "id": "cucumbers",
+      "name": "오이",
+      "calories": 5,
+      "carbs": 1,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 0
+    },
+    {
+      "id": "green_peppers",
+      "name": "피망",
+      "calories": 5,
+      "carbs": 1,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 0
+    },
+    {
+      "id": "red_onions",
+      "name": "양파",
+      "calories": 5,
+      "carbs": 1,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 0
+    },
+    {
+      "id": "olives",
+      "name": "올리브",
+      "calories": 15,
+      "carbs": 1,
+      "protein": 0,
+      "fat": 1,
+      "sodium": 25
+    },
+    {
+      "id": "jalapenos",
+      "name": "할라피뇨",
+      "calories": 5,
+      "carbs": 1,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 65
+    },
+    {
+      "id": "pickles",
+      "name": "피클",
+      "calories": 5,
+      "carbs": 1,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 90
+    },
+    {
+      "id": "avocado",
+      "name": "아보카도",
+      "calories": 60,
+      "carbs": 3,
+      "protein": 1,
+      "fat": 5,
+      "sodium": 5
+    }
+  ],
+  "cheeses": [
+    {
+      "id": "no_cheese",
+      "name": "선택 안함",
+      "calories": 0,
+      "carbs": 0,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 0
+    },
+    {
+      "id": "american",
+      "name": "아메리칸 치즈",
+      "calories": 35.3,
+      "carbs": 0.4,
+      "protein": 1.8,
+      "fat": 1.9,
+      "sodium": 193
+    },
+    {
+      "id": "shredded",
+      "name": "슈레드 치즈",
+      "calories": 53.6,
+      "carbs": 0,
+      "protein": 3.2,
+      "fat": 2.4,
+      "sodium": 84.7
+    },
+    {
+      "id": "mozzarella",
+      "name": "모짜렐라 치즈",
+      "calories": 43.8,
+      "carbs": 0.2,
+      "protein": 2.8,
+      "fat": 2.1,
+      "sodium": 82.3
+    }
+  ],
+  "sauces": [
+    {
+      "id": "no_sauce",
+      "name": "선택 안함",
+      "calories": 0,
+      "carbs": 0,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 0
+    },
+    {
+      "id": "mayo",
+      "name": "마요네즈",
+      "calories": 158,
+      "carbs": 0.1,
+      "protein": 0.3,
+      "fat": 2.8,
+      "sodium": 98.1
+    },
+    {
+      "id": "sweet_onion",
+      "name": "스위트 어니언",
+      "calories": 40.1,
+      "carbs": 8.2,
+      "protein": 0.1,
+      "fat": 0,
+      "sodium": 81.7
+    },
+    {
+      "id": "honey_mustard",
+      "name": "허니 머스타드",
+      "calories": 38.4,
+      "carbs": 6.3,
+      "protein": 0.4,
+      "fat": 0.4,
+      "sodium": 145
+    },
+    {
+      "id": "ranch",
+      "name": "랜치",
+      "calories": 116,
+      "carbs": 0.6,
+      "protein": 0.3,
+      "fat": 2.1,
+      "sodium": 128
+    },
+    {
+      "id": "chipotle",
+      "name": "스모크 치폴레",
+      "calories": 96.5,
+      "carbs": 1,
+      "protein": 0.4,
+      "fat": 1.6,
+      "sodium": 160
+    },
+    {
+      "id": "olive_oil",
+      "name": "올리브 오일",
+      "calories": 29,
+      "carbs": 0,
+      "protein": 0,
+      "fat": 0.5,
+      "sodium": 0
+    },
+    {
+      "id": "vinegar",
+      "name": "식초",
+      "calories": 0.7,
+      "carbs": 0,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 0
+    },
+    {
+      "id": "salt_pepper",
+      "name": "소금 & 후추",
+      "calories": 0,
+      "carbs": 0,
+      "protein": 0,
+      "fat": 0,
+      "sodium": 160
+    },
+    {
+      "id": "southwest",
+      "name": "사우스웨스트",
+      "calories": 96.5,
+      "carbs": 1,
+      "protein": 0.4,
+      "fat": 1.6,
+      "sodium": 160
+    },
+    {
+      "id": "horseradish",
+      "name": "홀스래디쉬",
+      "calories": 106,
+      "carbs": 2.6,
+      "protein": 0.3,
+      "fat": 1.6,
+      "sodium": 152
+    },
+    {
+      "id": "hot_chili",
+      "name": "핫 칠리",
+      "calories": 41.8,
+      "carbs": 5.3,
+      "protein": 0.2,
+      "fat": 0.1,
+      "sodium": 180
+    },
+    {
+      "id": "mustard",
+      "name": "머스타드",
+      "calories": 15,
+      "carbs": 1,
+      "protein": 0,
+      "fat": 1,
+      "sodium": 120
+    },
+    {
+      "id": "sweet_chili",
+      "name": "스위트 칠리",
+      "calories": 40,
+      "carbs": 9.2,
+      "protein": 0.1,
+      "fat": 0,
+      "sodium": 163
+    },
+    {
+      "id": "smoke_bbq",
+      "name": "스모크 바비큐",
+      "calories": 32.8,
+      "carbs": 7,
+      "protein": 0.2,
+      "fat": 0.1,
+      "sodium": 132
+    }
+  ]
+}

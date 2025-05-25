@@ -1,0 +1,516 @@
+/* 전체 앱 스타일 */
+.App {
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  margin-bottom: 0;
+  color: #008000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App-header h1 {
+  margin-bottom: 10px;
+}
+
+.App-header .logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* 칼로리 카운터 스타일 */
+.calorie-counter {
+  margin: 10px 0;
+  padding: 8px 20px;
+  background-color: #f9f9f9;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  z-index: 102;
+}
+
+.calorie-label {
+  margin-right: 10px;
+  color: #333;
+}
+
+.calorie-value {
+  font-size: 1.2em;
+  transition: all 0.3s ease;
+}
+
+.low-calorie {
+  color: #2e7d32;
+}
+
+.medium-calorie {
+  color: #ff9800;
+}
+
+.high-calorie {
+  color: #d32f2f;
+}
+
+/* 상태바 스타일 */
+.status-bar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  padding: 0;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 25px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.status-item:hover {
+  background-color: #e6f7e6;
+}
+
+.status-item.empty {
+  color: #666;
+}
+
+.status-item.selected {
+  background-color: #e6f7e6;
+  color: #008000;
+}
+
+.status-name {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.status-indicator {
+  font-size: 0.8em;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.status-item.selected .status-indicator {
+  background-color: #008000;
+  color: white;
+}
+
+.status-separator {
+  color: #ccc;
+  font-size: 1.2em;
+  margin: 0 5px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex: 1;
+}
+
+/* 사이즈 선택 영역 */
+.size-selector {
+  margin-bottom: 30px;
+}
+
+.size-selector h3 {
+  color: #008000;
+  border-bottom: 2px solid #008000;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.size-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.size-option {
+  flex: 1;
+  max-width: 150px;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.size-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.size-option.selected {
+  background-color: #008000;
+  border-color: #008000;
+  color: white;
+}
+
+.size-name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.size-info {
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+  text-align: right;
+}
+
+/* 메뉴 선택 영역 */
+.menu-container {
+  flex: 2;
+  min-width: 300px;
+}
+
+.menu-selector {
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  scroll-margin-top: 120px;
+}
+
+.menu-selector h3 {
+  text-transform: capitalize;
+  color: #008000;
+  border-bottom: 2px solid #008000;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.menu-item {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: calc(33.33% - 10px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item.selected {
+  background-color: #e6f7e6;
+  border-color: #008000;
+}
+
+.item-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.item-calories {
+  font-size: 0.8em;
+  color: #666;
+}
+
+/* 데이터 출처 정보 */
+.data-source-info {
+  margin: 30px 0;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.data-source-info h3 {
+  color: #008000;
+  border-bottom: 2px solid #008000;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.data-source-info h4 {
+  color: #008000;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.important-notice {
+  background-color: #fff8e1;
+  border-left: 4px solid #ffc107;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 4px;
+}
+
+.important-notice p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.data-source-info ul {
+  padding-left: 20px;
+}
+
+.data-source-info li {
+  margin-bottom: 8px;
+}
+
+.data-source-info a {
+  color: #008000;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.data-source-info a:hover {
+  text-decoration: underline;
+}
+
+.contact-email {
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.disclaimer {
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+/* 영양 정보 영역 */
+.nutrition-container {
+  flex: 1;
+  min-width: 250px;
+  position: sticky;
+  top: 120px;
+  align-self: flex-start;
+}
+
+.nutrition-facts {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nutrition-facts h3 {
+  color: #008000;
+  border-bottom: 2px solid #008000;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nutrition-row {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.nutrition-row.header {
+  font-weight: bold;
+  background-color: #e6f7e6;
+}
+
+.nutrition-cell {
+  padding: 10px;
+  flex: 1;
+  text-align: left;
+}
+
+.nutrition-cell:last-child {
+  text-align: right;
+}
+
+.selected-items {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.selected-items h3 {
+  color: #008000;
+  border-bottom: 2px solid #008000;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.selected-items ul {
+  padding-left: 20px;
+  text-align: left;
+  list-style-type: none;
+}
+
+.selected-items li {
+  margin-bottom: 10px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.category-name {
+  font-weight: bold;
+  color: #008000;
+  margin-right: 5px;
+}
+
+/* 공유 링크 영역 */
+.share-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.share-button {
+  background-color: #008000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 1em;
+}
+
+.share-button:hover {
+  background-color: #006600;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 푸터 영역 */
+.App-footer {
+  margin-top: 40px;
+  background-color: #008000;
+  color: white;
+  padding: 40px 0;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.copyright {
+  flex: 1;
+  min-width: 250px;
+  text-align: right;
+}
+
+.App-footer a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.App-footer a:hover {
+  opacity: 0.8;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .menu-item {
+    width: calc(50% - 10px);
+  }
+  
+  .nutrition-container {
+    position: static;
+  }
+  
+  .status-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .status-separator {
+    display: none;
+  }
+  
+  .status-item {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .copyright {
+    text-align: center;
+    margin-top: 20px;
+  }
+}

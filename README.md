@@ -22,7 +22,7 @@ https://subway-cal.drumgoon.net
 
 1. 저장소를 클론합니다.
 ```
-git clone https://github.com/yourusername/subway-calories-counter.git
+git clone https://github.com/niceguy61/subway-calories-counter.git
 ```
 
 2. 필요한 패키지를 설치합니다.

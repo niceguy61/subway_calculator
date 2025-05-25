@@ -1,0 +1,20 @@
+{
+  "short_name": "서브웨이 칼로리",
+  "name": "서브웨이 칼로리 계산기",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "subway-logo.png",
+      "type": "image/png",
+      "sizes": "320x320"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#008000",
+  "background_color": "#ffffff"
+}
