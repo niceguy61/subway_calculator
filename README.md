@@ -4,6 +4,8 @@
 
 https://subway-cal.drumgoon.net
 
+> 이 프로젝트는 Amazon Q를 활용하여 개발되었습니다.
+
 ## 구현된 기능
 
 - **재료 선택 기능**
@@ -76,6 +78,7 @@ yarn build
 - React 19.1.0
 - React Router 7.6.0
 - CSS (반응형 디자인)
+- Amazon Q (AI 코드 어시스턴트)
 
 ## 데이터 출처
 

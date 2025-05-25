@@ -532,10 +532,11 @@ function App() {
       <footer className="App-footer">
         <div className="footer-content">
           <div className="contact-info">
-            <p>문의: <a href="mailto:niceguy6112@gmail.com">niceguy6112@gmail.com</a></p>
+            <p>{language === 'ko' ? '문의' : 'Contact'}: <a href="mailto:niceguy6112@gmail.com">niceguy6112@gmail.com</a></p>
+            <p><a href="https://github.com/niceguy61/subway_calculator" target="_blank" rel="noopener noreferrer">GitHub</a></p>
           </div>
           <div className="copyright">
-            <p>&copy; {new Date().getFullYear()} 서브웨이 칼로리 계산기</p>
+            <p>&copy; {new Date().getFullYear()} {language === 'ko' ? '서브웨이 칼로리 계산기' : 'Subway Calorie Calculator'}</p>
           </div>
         </div>
       </footer>
