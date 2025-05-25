@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ShareLink = ({ selectedItems, selectedSize }) => {
+const ShareLink = ({ selectedItems, selectedSize, buttonText = '현재 선택 공유하기', copiedText = '링크가 복사되었습니다!' }) => {
   const [copied, setCopied] = useState(false);
   
   // 공유 URL 생성 함수
@@ -71,7 +71,7 @@ const ShareLink = ({ selectedItems, selectedSize }) => {
   return (
     <div className="share-link">
       <button onClick={handleCopyLink} className="share-button">
-        {copied ? '링크가 복사되었습니다!' : '현재 선택 공유하기'}
+        {copied ? copiedText : buttonText}
       </button>
     </div>
   );

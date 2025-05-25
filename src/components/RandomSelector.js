@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RandomSelector = ({ subwayData, onRandomSelect }) => {
+const RandomSelector = ({ subwayData, onRandomSelect, buttonText = '랜덤 조합 만들기' }) => {
   const generateRandomCombination = () => {
     // 랜덤 선택 로직
     const randomSize = subwayData.sizes[Math.floor(Math.random() * subwayData.sizes.length)];
@@ -42,7 +42,7 @@ const RandomSelector = ({ subwayData, onRandomSelect }) => {
         className="random-button"
         onClick={() => onRandomSelect(generateRandomCombination())}
       >
-        랜덤 조합 만들기
+        {buttonText}
       </button>
     </div>
   );

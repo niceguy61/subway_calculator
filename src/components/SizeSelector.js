@@ -1,9 +1,12 @@
 import React from 'react';
 
-const SizeSelector = ({ sizes, selectedSize, onChange }) => {
+const SizeSelector = ({ sizes, selectedSize, onChange, translations }) => {
+  // 번역 텍스트 또는 기본값 사용
+  const sizeSelectionText = translations?.sizeSelection || '사이즈 선택';
+  
   return (
     <div className="size-selector">
-      <h3>사이즈 선택</h3>
+      <h3>{sizeSelectionText}</h3>
       <div className="size-options">
         {sizes.map(size => (
           <div

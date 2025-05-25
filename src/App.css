@@ -476,6 +476,36 @@
   margin-top: 10px;
 }
 
+/* 언어 전환 버튼 스타일 */
+.language-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.language-button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.language-button:hover {
+  background-color: #e0e0e0;
+}
+
+.language-button.active {
+  background-color: #008000;
+  color: white;
+  border-color: #008000;
+}
+
 /* 푸터 영역 */
 .App-footer {
   margin-top: 40px;

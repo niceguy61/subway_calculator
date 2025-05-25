@@ -1,13 +1,13 @@
 import React from 'react';
 
-const StatusBar = ({ selectedItems, onItemClick }) => {
+const StatusBar = ({ selectedItems, onItemClick, translations }) => {
   const categories = [
-    { key: 'size', name: '사이즈', required: true },
-    { key: 'bread', name: '빵', required: true },
-    { key: 'meat', name: '메인', required: true },
-    { key: 'vegetables', name: '채소', required: false },
-    { key: 'cheese', name: '치즈', required: false },
-    { key: 'sauce', name: '소스', required: false }
+    { key: 'size', name: translations?.size || '사이즈', required: true },
+    { key: 'bread', name: translations?.bread || '빵', required: true },
+    { key: 'meat', name: translations?.meat || '메인', required: true },
+    { key: 'vegetables', name: translations?.vegetables || '채소', required: false },
+    { key: 'cheese', name: translations?.cheese || '치즈', required: false },
+    { key: 'sauce', name: translations?.sauce || '소스', required: false }
   ];
 
   const getStatus = (category) => {
@@ -21,6 +21,16 @@ const StatusBar = ({ selectedItems, onItemClick }) => {
     return 'selected';
   };
 
+  const getStatusText = (category, status) => {
+    if (category.required && status === 'empty') {
+      return translations?.required || '필수';
+    } else if (status === 'selected') {
+      return translations?.selected || '완료';
+    } else {
+      return translations?.select || '선택';
+    }
+  };
+
   return (
     <div className="status-bar">
       {categories.map((category, index) => (
@@ -31,8 +41,7 @@ const StatusBar = ({ selectedItems, onItemClick }) => {
           >
             <span className="status-name">{category.name}</span>
             <span className="status-indicator">
-              {category.required && getStatus(category) === 'empty' ? '필수' : 
-               getStatus(category) === 'selected' ? '완료' : '선택'}
+              {getStatusText(category, getStatus(category))}
             </span>
           </div>
           {index < categories.length - 1 && <div className="status-separator">›</div>}

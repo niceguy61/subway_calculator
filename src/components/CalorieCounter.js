@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CalorieCounter = ({ selectedItems, selectedSize }) => {
+const CalorieCounter = ({ selectedItems, selectedSize, translations }) => {
   // 총 칼로리 계산
   const calculateTotalCalories = () => {
     let total = 0;
@@ -25,9 +25,12 @@ const CalorieCounter = ({ selectedItems, selectedSize }) => {
     return 'high-calorie';
   };
   
+  // 번역 텍스트 또는 기본값 사용
+  const currentCaloriesText = translations?.currentCalories || '현재 칼로리:';
+  
   return (
     <div className="calorie-counter">
-      <span className="calorie-label">현재 칼로리:</span>
+      <span className="calorie-label">{currentCaloriesText}</span>
       <span className={`calorie-value ${getCalorieColor()}`}>
         {totalCalories} kcal
       </span>

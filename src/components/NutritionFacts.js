@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NutritionFacts = ({ selectedItems, selectedSize }) => {
+const NutritionFacts = ({ selectedItems, selectedSize, translations }) => {
   // 모든 선택된 항목의 영양 정보를 합산
   const calculateTotalNutrition = () => {
     const totals = {
@@ -38,38 +38,51 @@ const NutritionFacts = ({ selectedItems, selectedSize }) => {
 
   const totals = calculateTotalNutrition();
 
+  // 번역 텍스트 또는 기본값 사용
+  const t = {
+    nutritionFacts: translations?.nutritionFacts || '영양 정보',
+    calories: translations?.calories || '칼로리',
+    carbs: translations?.carbs || '탄수화물',
+    protein: translations?.protein || '단백질',
+    fat: translations?.fat || '지방',
+    sodium: translations?.sodium || '나트륨',
+    nutrient: translations?.nutrient || '영양소',
+    amount: translations?.amount || '함량',
+    sizeInfo: translations?.sizeInfo || '* {size} 기준'
+  };
+
   return (
     <div className="nutrition-facts">
-      <h3>영양 정보</h3>
+      <h3>{t.nutritionFacts}</h3>
       <div className="nutrition-table">
         <div className="nutrition-row header">
-          <div className="nutrition-cell">영양소</div>
-          <div className="nutrition-cell">함량</div>
+          <div className="nutrition-cell">{t.nutrient}</div>
+          <div className="nutrition-cell">{t.amount}</div>
         </div>
         <div className="nutrition-row">
-          <div className="nutrition-cell">칼로리</div>
+          <div className="nutrition-cell">{t.calories}</div>
           <div className="nutrition-cell">{totals.calories} kcal</div>
         </div>
         <div className="nutrition-row">
-          <div className="nutrition-cell">탄수화물</div>
+          <div className="nutrition-cell">{t.carbs}</div>
           <div className="nutrition-cell">{totals.carbs} g</div>
         </div>
         <div className="nutrition-row">
-          <div className="nutrition-cell">단백질</div>
+          <div className="nutrition-cell">{t.protein}</div>
           <div className="nutrition-cell">{totals.protein} g</div>
         </div>
         <div className="nutrition-row">
-          <div className="nutrition-cell">지방</div>
+          <div className="nutrition-cell">{t.fat}</div>
           <div className="nutrition-cell">{totals.fat} g</div>
         </div>
         <div className="nutrition-row">
-          <div className="nutrition-cell">나트륨</div>
+          <div className="nutrition-cell">{t.sodium}</div>
           <div className="nutrition-cell">{totals.sodium} mg</div>
         </div>
       </div>
       {selectedSize && (
         <div className="size-info">
-          <p>* {selectedSize.name} 기준</p>
+          <p>{t.sizeInfo.replace('{size}', selectedSize.name)}</p>
         </div>
       )}
     </div>

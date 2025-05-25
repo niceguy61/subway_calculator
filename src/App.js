@@ -11,6 +11,8 @@ import CalorieCounter from './components/CalorieCounter';
 import UpdateNotes from './components/UpdateNotes';
 import RandomSelector from './components/RandomSelector';
 import ResetButton from './components/ResetButton';
+import LanguageToggle from './components/LanguageToggle';
+import translations from './translations';
 import subwayData from './data/subwayData.json';
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
   const [selectedVegetables, setSelectedVegetables] = useState([]);
   const [selectedCheeses, setSelectedCheeses] = useState([]);
   const [selectedSauces, setSelectedSauces] = useState([]);
+  const [language, setLanguage] = useState('ko'); // 기본 언어: 한국어
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -54,7 +57,7 @@ function App() {
       const sizeId = params.get('size');
       if (sizeId) {
         hasParams = true;
-        const size = subwayData.sizes.find(s => s.id === sizeId);
+        const size = translatedData.sizes.find(s => s.id === sizeId);
         if (size) setSelectedSize(size);
       }
       
@@ -62,7 +65,7 @@ function App() {
       const breadId = params.get('bread');
       if (breadId) {
         hasParams = true;
-        const bread = subwayData.breads.find(b => b.id === breadId);
+        const bread = translatedData.breads.find(b => b.id === breadId);
         if (bread) setSelectedBread([bread]);
       }
       
@@ -70,7 +73,7 @@ function App() {
       const meatId = params.get('meat');
       if (meatId) {
         hasParams = true;
-        const meat = subwayData.meats.find(m => m.id === meatId);
+        const meat = translatedData.meats.find(m => m.id === meatId);
         if (meat) setSelectedMeats([meat]);
       }
       
@@ -79,7 +82,7 @@ function App() {
       if (vegIds) {
         hasParams = true;
         const vegs = vegIds.split(',')
-          .map(id => subwayData.vegetables.find(v => v.id === id))
+          .map(id => translatedData.vegetables.find(v => v.id === id))
           .filter(Boolean);
         if (vegs.length > 0) setSelectedVegetables(vegs);
       }
@@ -89,14 +92,14 @@ function App() {
       if (cheeseId) {
         hasParams = true;
         console.log('치즈 파싱:', cheeseId);
-        const cheese = subwayData.cheeses.find(c => c.id === cheeseId);
+        const cheese = translatedData.cheeses.find(c => c.id === cheeseId);
         if (cheese) {
           console.log('치즈 찾음:', cheese.name);
           setSelectedCheeses([cheese]);
         }
       } else if (hasParams) {
         // 파라미터가 있지만 치즈가 없는 경우 - 선택 안함으로 설정
-        const noCheese = subwayData.cheeses.find(cheese => cheese.id === 'no_cheese');
+        const noCheese = translatedData.cheeses.find(cheese => cheese.id === 'no_cheese');
         if (noCheese) setSelectedCheeses([noCheese]);
       }
       
@@ -110,7 +113,7 @@ function App() {
         
         const sauces = sauceIdArray
           .map(id => {
-            const sauce = subwayData.sauces.find(s => s.id === id);
+            const sauce = translatedData.sauces.find(s => s.id === id);
             if (sauce) {
               console.log('소스 찾음:', id, sauce.name);
             } else {
@@ -126,18 +129,18 @@ function App() {
         }
       } else if (hasParams) {
         // 파라미터가 있지만 소스가 없는 경우 - 선택 안함으로 설정
-        const noSauce = subwayData.sauces.find(sauce => sauce.id === 'no_sauce');
+        const noSauce = translatedData.sauces.find(sauce => sauce.id === 'no_sauce');
         if (noSauce) setSelectedSauces([noSauce]);
       }
       
       // 파라미터가 없는 경우 초기 로딩 시 기본값 설정
       if (!hasParams) {
         // 치즈 기본값
-        const noCheese = subwayData.cheeses.find(cheese => cheese.id === 'no_cheese');
+        const noCheese = translatedData.cheeses.find(cheese => cheese.id === 'no_cheese');
         if (noCheese) setSelectedCheeses([noCheese]);
         
         // 소스 기본값
-        const noSauce = subwayData.sauces.find(sauce => sauce.id === 'no_sauce');
+        const noSauce = translatedData.sauces.find(sauce => sauce.id === 'no_sauce');
         if (noSauce) setSelectedSauces([noSauce]);
       }
     } catch (error) {
@@ -239,33 +242,109 @@ function App() {
     sauce: selectedSauces
   };
 
+  // 현재 언어에 맞는 번역 텍스트 가져오기
+  const t = translations[language];
+  
+  // 언어 전환 핸들러
+  const handleLanguageToggle = (lang) => {
+    setLanguage(lang);
+  };
+  
+  // 데이터 번역 처리
+  const getTranslatedData = () => {
+    // 현재 언어에 맞는 번역 데이터 가져오기
+    const currentTranslations = translations[language];
+    
+    // 빵, 치즈, 소스, 야채, 메인 재료 데이터 번역
+    const translatedBreads = subwayData.breads.map(bread => ({
+      ...bread,
+      name: currentTranslations[bread.id] || bread.name
+    }));
+    
+    const translatedCheeses = subwayData.cheeses.map(cheese => ({
+      ...cheese,
+      name: currentTranslations[cheese.id] || cheese.name
+    }));
+    
+    const translatedSauces = subwayData.sauces.map(sauce => ({
+      ...sauce,
+      name: currentTranslations[sauce.id] || sauce.name
+    }));
+    
+    const translatedVegetables = subwayData.vegetables.map(vegetable => ({
+      ...vegetable,
+      name: currentTranslations[vegetable.id] || vegetable.name
+    }));
+    
+    const translatedMeats = subwayData.meats.map(meat => ({
+      ...meat,
+      name: currentTranslations[meat.id] || meat.name,
+      description: currentTranslations[`${meat.id}_desc`] || meat.description
+    }));
+    
+    return {
+      ...subwayData,
+      breads: translatedBreads,
+      cheeses: translatedCheeses,
+      sauces: translatedSauces,
+      vegetables: translatedVegetables,
+      meats: translatedMeats
+    };
+  };
+  
+  // 번역된 데이터
+  const translatedData = getTranslatedData();
+  
   return (
     <div className="App">
       <header className="App-header">
         <img src="/subway-logo.png" alt="Subway Logo" className="logo" />
-        <h1>서브웨이 칼로리 계산기 (Unofficial)</h1>
-        <p>원하는 재료를 선택하여 영양 정보를 확인하세요</p>
+        <h1>{t.title} (Unofficial)</h1>
+        <p>{t.subtitle}</p>
+        <LanguageToggle 
+          currentLanguage={language} 
+          onToggle={handleLanguageToggle} 
+        />
       </header>
       
       <div className="status-bar-container">
-        <CalorieCounter selectedItems={allSelectedItems} selectedSize={selectedSize} />
-        <StatusBar selectedItems={selectedItems} onItemClick={scrollToSection} />
+        <CalorieCounter 
+          selectedItems={allSelectedItems} 
+          selectedSize={selectedSize}
+          translations={{ currentCalories: t.currentCalories }}
+        />
+        <StatusBar 
+          selectedItems={selectedItems} 
+          onItemClick={scrollToSection}
+          translations={{
+            size: t.size,
+            bread: t.bread,
+            meat: t.meat,
+            vegetables: t.vegetables,
+            cheese: t.cheese,
+            sauce: t.sauce,
+            required: t.required,
+            selected: t.selected,
+            select: t.select
+          }}
+        />
       </div>
       
       <div className="container">
         <div className="menu-container">
           <div ref={sizeRef} className="menu-selector">
             <SizeSelector 
-              sizes={subwayData.sizes}
+              sizes={translatedData.sizes}
               selectedSize={selectedSize}
               onChange={setSelectedSize}
+              translations={{ sizeSelection: t.sizeSelection }}
             />
           </div>
           
           <div ref={breadRef}>
             <MenuSelector 
               title="bread" 
-              items={subwayData.breads} 
+              items={translatedData.breads} 
               selectedItems={selectedBread} 
               onChange={setSelectedBread} 
             />
@@ -274,7 +353,7 @@ function App() {
           <div ref={meatRef}>
             <MenuSelector 
               title="meat" 
-              items={subwayData.meats} 
+              items={translatedData.meats} 
               selectedItems={selectedMeats} 
               onChange={setSelectedMeats} 
             />
@@ -283,7 +362,7 @@ function App() {
           <div ref={vegetablesRef}>
             <MenuSelector 
               title="vegetables" 
-              items={subwayData.vegetables} 
+              items={translatedData.vegetables} 
               selectedItems={selectedVegetables} 
               onChange={setSelectedVegetables} 
             />
@@ -292,7 +371,7 @@ function App() {
           <div ref={cheeseRef}>
             <MenuSelector 
               title="cheese" 
-              items={subwayData.cheeses} 
+              items={translatedData.cheeses} 
               selectedItems={selectedCheeses} 
               onChange={setSelectedCheeses} 
             />
@@ -301,60 +380,107 @@ function App() {
           <div ref={sauceRef}>
             <MenuSelector 
               title="sauce" 
-              items={subwayData.sauces} 
+              items={translatedData.sauces} 
               selectedItems={selectedSauces} 
               onChange={setSelectedSauces} 
             />
           </div>
           
-          <UpdateNotes />
-          <DataSourceInfo />
+          <UpdateNotes 
+            translations={{
+              language: language,
+              updateNotes: t.updateNotes,
+              showUpdateNotes: t.showUpdateNotes,
+              hideUpdateNotes: t.hideUpdateNotes,
+              updateNote1_1: t.updateNote1_1,
+              updateNote1_2: t.updateNote1_2,
+              updateNote1_3: t.updateNote1_3,
+              updateNote1_4: t.updateNote1_4,
+              updateNote1_5: t.updateNote1_5,
+              updateNote1_6: t.updateNote1_6,
+              updateNote1_7: t.updateNote1_7,
+              updateNote0_1: t.updateNote0_1,
+              updateNote0_2: t.updateNote0_2
+            }}
+          />
+          <DataSourceInfo 
+            translations={{
+              language: language,
+              importantNotice: t.importantNotice,
+              dataSource: t.dataSource,
+              disclaimer: t.disclaimer,
+              contact: t.contact,
+              importantNotice1: t.importantNotice1,
+              importantNotice2: t.importantNotice2,
+              importantNotice3: t.importantNotice3,
+              importantNotice4: t.importantNotice4
+            }}
+          />
         </div>
         
         <div className="nutrition-container">
-          <NutritionFacts selectedItems={allSelectedItems} selectedSize={selectedSize} />
+          <NutritionFacts 
+            selectedItems={allSelectedItems} 
+            selectedSize={selectedSize}
+            translations={{
+              nutritionFacts: t.nutritionFacts,
+              calories: t.calories,
+              carbs: t.carbs,
+              protein: t.protein,
+              fat: t.fat,
+              sodium: t.sodium,
+              nutrient: t.nutrient,
+              amount: t.amount,
+              sizeInfo: t.sizeInfo
+            }}
+          />
           
           <div className="selected-items">
-            <h3>선택한 재료</h3>
+            <h3>{t.selectedItems}</h3>
             <ul>
               <li className="category">
-                <span className="category-name">사이즈:</span> {selectedSize.name}
+                <span className="category-name">{t.size}:</span> {selectedSize.name}
               </li>
               {selectedBread.length > 0 && (
                 <li className="category">
-                  <span className="category-name">빵:</span> {selectedBread[0].name}
+                  <span className="category-name">{t.bread}:</span> {selectedBread[0].name}
                 </li>
               )}
               {selectedMeats.length > 0 && (
                 <li className="category">
-                  <span className="category-name">메인:</span> {selectedMeats[0].name}
+                  <span className="category-name">{t.meat}:</span> {selectedMeats[0].name}
                 </li>
               )}
               {selectedVegetables.length > 0 && (
                 <li className="category">
-                  <span className="category-name">채소:</span> 
+                  <span className="category-name">{t.vegetables}:</span> 
                   {selectedVegetables.map(item => item.name).join(', ')}
                 </li>
               )}
               {selectedCheeses.length > 0 && selectedCheeses[0].id !== 'no_cheese' && (
                 <li className="category">
-                  <span className="category-name">치즈:</span> {selectedCheeses[0].name}
+                  <span className="category-name">{t.cheese}:</span> {selectedCheeses[0].name}
                 </li>
               )}
               {selectedSauces.length > 0 && selectedSauces[0].id !== 'no_sauce' && (
                 <li className="category">
-                  <span className="category-name">소스:</span> 
+                  <span className="category-name">{t.sauce}:</span> 
                   {selectedSauces.map(item => item.id !== 'no_sauce' ? item.name : '').filter(Boolean).join(', ')}
                 </li>
               )}
             </ul>
           </div>
           
-          <ShareLink selectedItems={selectedItems} selectedSize={selectedSize} />
+          <ShareLink 
+            selectedItems={selectedItems} 
+            selectedSize={selectedSize}
+            buttonText={t.shareButton}
+            copiedText={t.linkCopied}
+          />
           
           <div className="button-group">
             <RandomSelector 
-              subwayData={subwayData} 
+              subwayData={translatedData} 
               onRandomSelect={(randomItems) => {
                 setSelectedSize(randomItems.size);
                 setSelectedBread(randomItems.bread);
@@ -370,7 +496,8 @@ function App() {
                     block: 'start'
                   });
                 }
-              }} 
+              }}
+              buttonText={t.randomButton}
             />
             
             <ResetButton 
@@ -382,10 +509,10 @@ function App() {
                 setSelectedVegetables([]);
                 
                 // 치즈와 소스는 '선택 안함' 옵션으로 설정
-                const noCheese = subwayData.cheeses.find(cheese => cheese.id === 'no_cheese');
+                const noCheese = translatedData.cheeses.find(cheese => cheese.id === 'no_cheese');
                 if (noCheese) setSelectedCheeses([noCheese]);
                 
-                const noSauce = subwayData.sauces.find(sauce => sauce.id === 'no_sauce');
+                const noSauce = translatedData.sauces.find(sauce => sauce.id === 'no_sauce');
                 if (noSauce) setSelectedSauces([noSauce]);
                 
                 // 첫 번째 섹션으로 스크롤
@@ -396,6 +523,7 @@ function App() {
                   });
                 }
               }}
+              buttonText={t.resetButton}
             />
           </div>
         </div>
