@@ -9,6 +9,8 @@ import DataSourceInfo from './components/DataSourceInfo';
 import ShareLink from './components/ShareLink';
 import CalorieCounter from './components/CalorieCounter';
 import UpdateNotes from './components/UpdateNotes';
+import RandomSelector from './components/RandomSelector';
+import ResetButton from './components/ResetButton';
 import subwayData from './data/subwayData.json';
 
 function App() {
@@ -349,6 +351,53 @@ function App() {
           </div>
           
           <ShareLink selectedItems={selectedItems} selectedSize={selectedSize} />
+          
+          <div className="button-group">
+            <RandomSelector 
+              subwayData={subwayData} 
+              onRandomSelect={(randomItems) => {
+                setSelectedSize(randomItems.size);
+                setSelectedBread(randomItems.bread);
+                setSelectedMeats(randomItems.meat);
+                setSelectedVegetables(randomItems.vegetables);
+                setSelectedCheeses(randomItems.cheese);
+                setSelectedSauces(randomItems.sauce);
+                
+                // 첫 번째 섹션으로 스크롤
+                if (sizeRef.current) {
+                  sizeRef.current.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }} 
+            />
+            
+            <ResetButton 
+              onReset={() => {
+                // 기본값으로 초기화
+                setSelectedSize(subwayData.sizes[0]); // 15cm
+                setSelectedBread([]);
+                setSelectedMeats([]);
+                setSelectedVegetables([]);
+                
+                // 치즈와 소스는 '선택 안함' 옵션으로 설정
+                const noCheese = subwayData.cheeses.find(cheese => cheese.id === 'no_cheese');
+                if (noCheese) setSelectedCheeses([noCheese]);
+                
+                const noSauce = subwayData.sauces.find(sauce => sauce.id === 'no_sauce');
+                if (noSauce) setSelectedSauces([noSauce]);
+                
+                // 첫 번째 섹션으로 스크롤
+                if (sizeRef.current) {
+                  sizeRef.current.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }}
+            />
+          </div>
         </div>
       </div>
       

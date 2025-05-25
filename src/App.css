@@ -422,7 +422,7 @@
   text-align: center;
 }
 
-.share-button {
+.share-button, .random-button {
   background-color: #008000;
   color: white;
   border: none;
@@ -435,10 +435,45 @@
   font-size: 1em;
 }
 
-.share-button:hover {
+.share-button:hover, .random-button:hover {
   background-color: #006600;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.random-button {
+  background-color: #ff9800;
+  margin-top: 10px;
+}
+
+.random-button:hover {
+  background-color: #f57c00;
+}
+
+.reset-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.reset-button:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 /* 푸터 영역 */
